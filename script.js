@@ -296,7 +296,7 @@ function newFlatMap(array, callback) {
 const arrayFlatMap = [1, 2, 3, 4, 5];
 
 function flatMapTest(elem, index, array) {
-  return [elem * 2];
+  return elem * 2;
 }
 
-// console.log(newFlatMap(arrayFlatMap, flatMapTest));
+console.log(newFlatMap(arrayFlatMap, flatMapTest));
