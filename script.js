@@ -1,6 +1,9 @@
 // Escreva seu código aqui
 
-// forEach
+// forEach --------------------------------------------------------------------------------------------------------------------------------------
+const arrayForEach = ["<", "<", "<"];
+const arrayForEachTwo = [";", ";", ";"];
+
 function newForEach(array, callback) {
   let newArray = [];
   for (let i = 0; i < array.length; i++) {
@@ -9,9 +12,6 @@ function newForEach(array, callback) {
   return newArray;
 }
 
-const arrayForEach = ["<", "<", "<"];
-const arrayForEachTwo = [";", ";", ";"];
-
 function testForEach(elem, i, array) {
   return (array[i] = elem + 3);
 }
@@ -19,7 +19,9 @@ function testForEach(elem, i, array) {
 // console.log(newForEach(arrayForEach, testForEach));
 // console.log(newForEach(arrayForEachTwo, testForEach));
 
-// map
+// map ------------------------------------------------------------------------------------------------------------------------------------------
+const arrayTest = [1, 2, 3, 4, 5];
+
 function newMap(array, callback) {
   const newArray = [];
   for (let i = 0; i < array.length; i++) {
@@ -27,7 +29,6 @@ function newMap(array, callback) {
   }
   return newArray;
 }
-const arrayTest = [1, 2, 3, 4, 5];
 
 function mapTest(elem, index, array) {
   return `Número ${elem} na posição: ${index}, veio desse array: ${array}`;
@@ -36,17 +37,8 @@ function mapTest(elem, index, array) {
 // console.log(arrayTest.map(mapTest));
 // console.log(newMap(arrayTest, mapTest));
 
-// filter
-function newFilter(array, callback) {
-  const newArray = [];
-  for (let i = 0; i < array.length; i++) {
-    if (callback(array[i], i, array)) {
-      newArray.push(array[i]);
-    }
-  }
-  return newArray;
-}
-const arrayFilter = [1, 2, 3, 4, 5];
+// filter ---------------------------------------------------------------------------------------------------------------------------------------
+const arrayFilter = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 const arrayFilterTwo = [
   "Gabriel",
   "Matheus",
@@ -56,18 +48,26 @@ const arrayFilterTwo = [
   "Henrique",
 ];
 
-function filterTest(elem, index, array) {
-  return elem > 2;
+function newFilter(array, callback) {
+  const newArray = [];
+  for (let i = 0; i < array.length; i++) {
+    if (callback(array[i], i, array)) {
+      newArray.push(array[i]);
+    }
+  }
+  return newArray;
 }
 
-function filterTestTwo(elem, index, array) {
-  return elem.length > 6;
+function filterTest(elem, index, array) {
+  return elem > 6;
 }
 
 // console.log(newFilter(arrayFilter, filterTest));
-// console.log(newFilter(arrayFilterTwo, filterTestTwo));
+// console.log(newFilter(arrayFilterTwo, filterTest));
 
-// find
+// find ----------------------------------------------------------------------------------------------------------------------------------------
+const arrayFind = ["Minecraft", "GTA V", "Fortnite", "Overwatch", "PUBG"];
+
 function newFind(array, callback) {
   for (let i = 0; i < array.length; i++) {
     if (callback(array[i], i, array)) {
@@ -76,21 +76,16 @@ function newFind(array, callback) {
   }
 }
 
-const arrayFind = [100, 200, 300, 400, 500];
-const arrayFindTwo = ["Minecraft", "GTA V", "Fortnite", "Overwatch", "PUBG"];
-
 function findTest(elem, index, array) {
-  return elem > 500;
-}
-
-function findTestTwo(elem, index, array) {
   return elem == "GTA V";
 }
 
 // console.log(newFind(arrayFind, findTest));
-// console.log(newFind(arrayFindTwo, findTestTwo));
 
-// indexOf
+//indexOf --------------------------------------------------------------------------------------------------------------------------------------
+const arrayIndexOf = [13, 14, 15, 16, 17];
+const arrayIndexOfTwo = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
 function newIndexOf(array, callback) {
   for (let i = 0; i < array.length; i++) {
     if (callback(array[i], i, array)) {
@@ -100,24 +95,17 @@ function newIndexOf(array, callback) {
   return -1;
 }
 
-const arrayIndexOf = [13, 14, 15, 16, 17];
-const arrayIndexOfTwo = [
-  "JavaScript",
-  "Css",
-  "Html",
-  "Jquery",
-  "React",
-  "Angular",
-];
-
 function indexOfTest(elem, index, array) {
-  return elem < "Html";
+  return elem < 10;
 }
 
 // console.log(newIndexOf(arrayIndexOf, indexOfTest));
 // console.log(newIndexOf(arrayIndexOfTwo, indexOfTest));
 
-// includes
+// includes -------------------------------------------------------------------------------------------------------------------------------------
+const arrayIncludes = ["Gato", "Cachorro", "Gato", "Cachorro", "Gato"];
+const arrayIncludesTwo = ["Brasil", "Portugal", "Espanha", "França", "Italia"];
+
 function newIncludes(array, callback) {
   for (let i = 0; i < array.length; i++) {
     if (callback(array[i], i, array)) {
@@ -126,9 +114,6 @@ function newIncludes(array, callback) {
   }
   return false;
 }
-
-const arrayIncludes = ["Gato", "Cachorro", "Gato", "Cachorro", "Gato"];
-const arrayIncludesTwo = ["Brasil", "Portugal", "Espanha", "França", "Italia"];
 
 function includesTest(elem, index, array) {
   return elem == "Gato";
@@ -141,7 +126,10 @@ function includesTestTwo(elem, index, array) {
 // console.log(newIncludes(arrayIncludes, includesTest));
 // console.log(newIncludes(arrayIncludesTwo, includesTestTwo));
 
-// reduce
+// reduce -------------------------------------------------------------------------------------------------------------------------------------
+const arrayReduce = [50, 50];
+const arrayReduceTwo = [500, 250];
+
 function newReduce(array, callback) {
   let acc = 0;
   for (let i = 0; i < array.length; i++) {
@@ -150,21 +138,22 @@ function newReduce(array, callback) {
   return acc;
 }
 
-const arrayReduce = [50, 50];
-const arrayReduceTwo = [500, 250];
-
 function reduceTest(acc, elem, index, array) {
   return acc + elem;
 }
 
-function reduceTestTwo(acc, elem, index, array) {
-  return acc - elem;
-}
-
 // console.log(newReduce(arrayReduce, reduceTest));
-// console.log(newReduce(arrayReduceTwo, reduceTestTwo));
+// console.log(newReduce(arrayReduceTwo, reduceTest));
 
-// findIndex
+// findIndex ------------------------------------------------------------------------------------------------------------------------------------
+const arrayFindIndex = [
+  "Futebol",
+  "Ping-pong",
+  "Vôlei",
+  "Frescobol",
+  "Basquete",
+];
+
 function newFindIndex(array, callback) {
   for (let i = 0; i < array.length; i++) {
     if (callback(array[i], i, array)) {
@@ -174,21 +163,16 @@ function newFindIndex(array, callback) {
   return -1;
 }
 
-const arrayFindIndex = [
-  "Futebol",
-  "Ping-pong",
-  "Vôlei",
-  "Frescobol",
-  "Basquete",
-];
-
 function findIndexTest(elem, index, array) {
   return elem == "Basquete";
 }
 
 // console.log(newFindIndex(arrayFindIndex, findIndexTest));
 
-//  some
+// some -------------------------------------------------------------------------------------------------------------------------------------
+const arraySome = [2, 5, 8, 1, 4];
+const arraySomeTwo = [12, 5, 8, 1, 4];
+
 function newSome(array, callback) {
   for (let i = 0; i < array.length; i++) {
     if (callback(array[i], i, array)) {
@@ -198,9 +182,6 @@ function newSome(array, callback) {
   return false;
 }
 
-const arraySome = [2, 5, 8, 1, 4];
-const arraySomeTwo = [12, 5, 8, 1, 4];
-
 function someTest(elem, index, array) {
   return elem > 10;
 }
@@ -208,7 +189,10 @@ function someTest(elem, index, array) {
 // console.log(newSome(arraySome, someTest));
 // console.log(newSome(arraySomeTwo, someTest));
 
-// every
+// every -------------------------------------------------------------------------------------------------------------------------------------
+const arrayEvery = [12, 5, 8, 130, 44];
+const arrayEveryTwo = [12, 54, 18, 130, 44];
+
 function newEvery(array, callback) {
   for (let i = 0; i < array.length; i++) {
     if (!callback(array[i], i, array)) {
@@ -218,9 +202,6 @@ function newEvery(array, callback) {
   return true;
 }
 
-const arrayEvery = [12, 5, 8, 130, 44];
-const arrayEveryTwo = [12, 54, 18, 130, 44];
-
 function everyTest(elem, index, array) {
   return elem >= 10;
 }
@@ -228,7 +209,10 @@ function everyTest(elem, index, array) {
 // console.log(newEvery(arrayEvery, everyTest));
 // console.log(newEvery(arrayEveryTwo, everyTest));
 
-// concat
+// concat ---------------------------------------------------------------------------------------------------------------------------------------
+const arrayConcat = ["a", "b", "c"];
+const arrayConcatTwo = ["d", "e", "f"];
+
 function newConcat(array, args) {
   const newArray = array.slice();
   for (let i = 0; i < args.length; i++) {
@@ -237,12 +221,11 @@ function newConcat(array, args) {
   return newArray;
 }
 
-const arrayConcat = ["a", "b", "c"];
-const arrayConcatTwo = ["d", "e", "f"];
-
 // console.log(newConcat(arrayConcat, arrayConcatTwo));
 
-// join
+// join ---------------------------------------------------------------------------------------------------------------------------------------
+const arrayJoin = ["Fire", "Air", "Water"];
+
 function newJoin(array, separador) {
   let newString = "";
   for (let i = 0; i < array.length; i++) {
@@ -254,11 +237,11 @@ function newJoin(array, separador) {
   return newString;
 }
 
-const arrayJoin = ["Fire", "Air", "Water"];
-
 // console.log(newJoin(arrayJoin, ''));
 
-// slice
+// slice ----------------------------------------------------------------------------------------------------------------------------------------
+const arraySlice = ["Banana", "Laranja", "Limao", "Maçã", "Manga"];
+
 function newSlice(array, inicio, fim) {
   const newArray = [];
   for (let i = inicio; i < fim; i++) {
@@ -267,11 +250,11 @@ function newSlice(array, inicio, fim) {
   return newArray;
 }
 
-const arraySlice = ["Banana", "Laranja", "Limao", "Maçã", "Manga"];
-
 // console.log(newSlice(arraySlice, 1, 3));
 
-// flat
+// flat -----------------------------------------------------------------------------------------------------------------------------------------
+const arrayFlat = [1, 2, [3, 4]];
+
 function newFlat(array) {
   const newArray = [];
   for (let i = 0; i < array.length; i++) {
@@ -280,11 +263,11 @@ function newFlat(array) {
   return newArray;
 }
 
-const arrayFlat = [1, 2, [3, 4]];
-
 // console.log(newFlat(arrayFlat));
 
-// flatMap
+// flatMap --------------------------------------------------------------------------------------------------------------------------------------
+const arrayFlatMap = [1, 2, 3, 4, 5];
+
 function newFlatMap(array, callback) {
   const newArray = [];
   for (let i = 0; i < array.length; i++) {
@@ -293,7 +276,6 @@ function newFlatMap(array, callback) {
   return newArray;
 }
 
-const arrayFlatMap = [1, 2, 3, 4, 5];
 
 function flatMapTest(elem, index, array) {
   return elem * 2;
