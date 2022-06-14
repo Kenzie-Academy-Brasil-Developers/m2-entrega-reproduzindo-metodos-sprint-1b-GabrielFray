@@ -5,15 +5,13 @@ const arrayForEach = ["<", "<", "<"];
 const arrayForEachTwo = [";", ";", ";"];
 
 function newForEach(array, callback) {
-  let newArray = [];
   for (let i = 0; i < array.length; i++) {
-    newArray.push(callback(array[i], i, array));
+    callback(array[i], i, array);
   }
-  return newArray;
 }
 
 function testForEach(elem, i, array) {
-  return (array[i] = elem + 3);
+  console.log((array[i] = elem + 3));
 }
 
 // console.log(newForEach(arrayForEach, testForEach));
@@ -275,7 +273,6 @@ function newFlatMap(array, callback) {
   }
   return newArray;
 }
-
 
 function flatMapTest(elem, index, array) {
   return elem * 2;
