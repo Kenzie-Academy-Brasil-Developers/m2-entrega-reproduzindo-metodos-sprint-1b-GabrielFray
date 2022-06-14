@@ -272,15 +272,15 @@ const arraySlice = ["Banana", "Laranja", "Limao", "Maçã", "Manga"];
 // console.log(newSlice(arraySlice, 1, 3));
 
 // flat
-// function newFlat(array) {
-//   const newArray = [];
-//   for (let i = 0; i < array.length; i++) {
-//     newArray.push(array[i], i, array);
-//   }
-//   return newArray;
-// }
+function newFlat(array) {
+  const newArray = [];
+  for (let i = 0; i < array.length; i++) {
+    newArray.push(array[i], i, array);
+  }
+  return newArray;
+}
 
-// const arrayFlat = [1, 2, [3, 4]];
+const arrayFlat = [1, 2, [3, 4]];
 
 // console.log(newFlat(arrayFlat));
 
@@ -299,4 +299,4 @@ function flatMapTest(elem, index, array) {
   return elem * 2;
 }
 
-console.log(newFlatMap(arrayFlatMap, flatMapTest));
+// console.log(newFlatMap(arrayFlatMap, flatMapTest));
