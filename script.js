@@ -211,10 +211,16 @@ function everyTest(elem, index, array) {
 const arrayConcat = ["a", "b", "c"];
 const arrayConcatTwo = ["d", "e", "f"];
 
-function newConcat(array, args) {
+function newConcat(array, ...args) {
   const newArray = array.slice();
   for (let i = 0; i < args.length; i++) {
-    newArray.push(args[i]);
+    if (Array.isArray(args[i])) {
+      for (let j = 0; j < args[i].length; j++) {
+        newArray.push(args[i][j]);
+      }
+    } else {
+      newArray.push(args[i]);
+    }
   }
   return newArray;
 }
@@ -251,31 +257,43 @@ function newSlice(array, inicio, fim) {
 // console.log(newSlice(arraySlice, 1, 3));
 
 // flat -----------------------------------------------------------------------------------------------------------------------------------------
-const arrayFlat = [1, 2, [3, 4]];
+const arrayFlat = [
+  1,
+  2,
+  3,
+  4,
+  67,
+  [25, [45, [32, [234, [23, [475], 43], 34], 89], 25], 87],
+  0,
+];
 
-function newFlat(array) {
-  const newArray = [];
-  for (let i = 0; i < array.length; i++) {
-    newArray.push(array[i], i, array);
+function newFlat(originArray, deep = 1) {
+  let newArray = originArray;
+
+  while (deep > 0 && newSome(newArray, (element) => Array.isArray(element))) {
+    newArray = newReduce(
+      newArray,
+      (array, element) => newConcat(array, element),
+      []
+    );
+
+    deep--;
   }
+
   return newArray;
 }
 
-// console.log(newFlat(arrayFlat));
+// console.log(newFlat(arrayFlat, Infinity));
 
 // flatMap --------------------------------------------------------------------------------------------------------------------------------------
 const arrayFlatMap = [1, 2, 3, 4, 5];
 
 function newFlatMap(array, callback) {
-  const newArray = [];
-  for (let i = 0; i < array.length; i++) {
-    newArray.push(callback(array[i], i, array));
-  }
-  return newArray;
+  return newFlat(newMap(array, callback));
 }
 
-function flatMapTest(elem, index, array) {
-  return elem * 2;
+function flatMapTest(elem) {
+  return [elem, elem * elem];
 }
 
-// console.log(newFlatMap(arrayFlatMap, flatMapTest));
+console.log(newFlatMap(arrayFlatMap, flatMapTest));
