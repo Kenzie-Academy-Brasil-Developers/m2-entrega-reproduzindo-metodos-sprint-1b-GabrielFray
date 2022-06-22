@@ -128,9 +128,9 @@ function includesTestTwo(elem, index, array) {
 const arrayReduce = [50, 50];
 const arrayReduceTwo = [500, 250];
 
-function newReduce(array, callback) {
-  let acc = 0;
-  for (let i = 0; i < array.length; i++) {
+function newReduce(array, callback, valorInicial) {
+  let acc = valorInicial ? valorInicial : array[0];
+  for (let i = valorInicial ? 0 : 1; i < array.length; i++) {
     acc = callback(acc, array[i], i, array);
   }
   return acc;
