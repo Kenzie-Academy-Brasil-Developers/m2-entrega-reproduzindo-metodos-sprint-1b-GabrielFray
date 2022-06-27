@@ -246,15 +246,17 @@ function newJoin(array, separador) {
 // slice ----------------------------------------------------------------------------------------------------------------------------------------
 const arraySlice = ["Banana", "Laranja", "Limao", "Maçã", "Manga"];
 
-function newSlice(array, inicio, fim) {
+function newSlice(array, inicio, fim = array.length) {
   const newArray = [];
-  for (let i = inicio; i < fim; i++) {
+  let start = inicio < 0 ? array.length + inicio : inicio;
+  let end = fim < 0 ? array.length + fim : fim;
+  for (let i = start; i < end; i++) {
     newArray.push(array[i]);
   }
   return newArray;
 }
 
-// console.log(newSlice(arraySlice, 1, 3));
+// console.log(newSlice(arraySlice, -3, -1));
 
 // flat -----------------------------------------------------------------------------------------------------------------------------------------
 const arrayFlat = [
@@ -296,4 +298,4 @@ function flatMapTest(elem) {
   return [elem, elem * elem];
 }
 
-console.log(newFlatMap(arrayFlatMap, flatMapTest));
+// console.log(newFlatMap(arrayFlatMap, flatMapTest));
